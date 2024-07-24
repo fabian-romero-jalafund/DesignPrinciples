@@ -14,13 +14,17 @@ public class UserManager
     _users.Add(new User { Username = username, Email = email, Password = password });
   }
 
-  public void ModifyUser(string username, string email, string newPassword)
+  public void UpdateUserPassword(string username, string newPassword)
   {
-    var user = _users.FirstOrDefault(u => u.Username == username && u.Email == email);
-    
+    var user = _users.FirstOrDefault(u => u.Username == username);
+
     if (user != null)
     {
-      user.Password = newPassword;
+      user.UpdatePassword(newPassword);
+    }
+    else
+    {
+      Console.WriteLine($"User with username {username} not found.");
     }
   }
 

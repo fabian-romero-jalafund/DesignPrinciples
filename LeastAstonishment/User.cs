@@ -9,4 +9,19 @@ public class User
   public string Password { get; set; }
   
   public string Role { get; set; }
+
+  public User()
+  {
+    //...
+  }
+
+  public void UpdatePassword(string newPassword)
+  {
+    if (string.IsNullOrWhiteSpace(newPassword))
+    {
+      throw new ArgumentException("New password cannot be empty.");
+    }
+
+    Password = newPassword;
+  }
 }
